@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&display=swap">
+    <link rel="stylesheet" href="static/styleespace.css">
+    <title>ServiceS Médicaux</title>
+</head>
+<body>
+
+    <header>
+        <h1>Votre Service de Rendez-vous Médicaux</h1>
+        <p style="color:black">Facilitez la prise de rendez-vous médicaux en ligne dans les zones rurales.</p>
+    </header>
+
+    <section class="cta-section">
+        <h2>Prenez rendez-vous en quelques clics</h2>
+        <p>Connectez-vous ou enregistrez-vous pour bénéficier de nos services.</p>
+    </section>
+    <section class="options">
+            <a href="{{ url_for('main.rendez_vous')}}" class="cta-button" id="loginBtn">Prise de Rendez-Vous</a>
+            <a href="{{ url_for('main.urgence')}}" class="cta-button" id="registerBtn">Urgence</a>
+            <a href="{{ url_for('main.chatbot')}}" class="cta-button" id="registerBtn">Parler avec l'IA</a>
+            <a href="{{ url_for('main.medicament')}}" class="cta-button" id="registerBtn">Rendre Medciaments</a>
+    </section>
+    
+    <section class="features-section">
+        <div class="feature">
+            <h3>Facile à utiliser</h3>
+            <p>Un processus simple et intuitif pour prendre rendez-vous en ligne.</p>
+        </div>
+        <div class="feature">
+            <h3>Rapidité</h3>
+            <p>Gagnez du temps en évitant les longues files d'attente à l'hôpital.</p>
+        </div>
+        <div class="feature">
+            <h3>Sécurité</h3>
+            <p>Vos informations sont sécurisées et confidentielles.</p>
+        </div>
+    </section>
+    <section class="barriere">
+        <h2>Prise de Rendez-vous</h2>
+        <div class="description">
+            <div class="block">
+                <h3>🎥 Téléconsultation en Direct</h3>
+                <p>Parlez de vos symptômes face à face via la caméra, sans quitter votre domicile.</p> 
+                <h3>🚑 Détection Rapide d'Urgences</h3>
+                <p>Notre technologie avancée identifie les situations d'urgence pour une intervention rapide.</p>  
+                <h3>📋 Dossier Médical Automatique</h3>
+                <p>Votre dossier médical se met à jour pendant la consultation, éliminant les formalités.</p>          
+                <h3>📅 Rendez-vous Facile</h3>
+                <p>Prenez rendez-vous en ligne instantanément pour une visite ultérieure.</p>
+            </div>
+            <img src="image-removebg-preview.png" style="scale:0.8">
+        </div>
+
+    </section>
+    <br>
+    <section class="barriere">
+        <h2>Urgence</h2>
+        <div class="description">
+            <div class="block" style="width:60%;">
+                <h3>🚨 Détection de Symptômes Intelligente</h3>
+                <p>Sélectionnez vos symptômes, recevez des conseils instantanés.</p> 
+                <h3>🏥 Localisation du Centre de Soins le Plus Proche</h3>
+                <p>Trouvez le centre de soins le plus proche pour vos besoins.</p>          
+                <h3>📞 Appel d'Ambulance en un Clic</h3>
+                <p>Appuyez pour une assistance urgente.</p>
+            </div>
+            <img src="image-removebg-preview (1).png" style="scale:0.8">
+        </div>
+
+    </section>
+    <br>
+
+    <section class="barriere">
+        <h2>Parler avec l'IA</h2>
+        <div class="description">
+            <div class="block">
+                <h3>💬 Exprimez vos symptôme</h3>
+                <p>Communiquez vos symptômes au chatbot.</p> 
+                <h3>🚨Évaluation Instantanée</h3>
+                <p>Découvrez rapidement si votre situation est urgente. L'IA vous recommande d'appeler une ambulance si nécessaire, sinon, consultez un médecin.</p>  
+                <h3>📱 Réponse Immédiate</h3>
+                <p>Réagissez en temps réel aux conseils de l'IA. Votre santé, notre priorité.</p>          
+            </div>
+            <img src="image-removebg-preview (2).png" style="scale:0.7">
+        </div>
+
+    </section>
+    <br>
+
+    <section class="barriere">
+        <h2>Rendre Medciaments</h2>
+        <div class="description">
+            <div class="block">
+                <h3>📦Retour Facile en Pharmacie ou Hôpital</h3>
+                <p>Déposez vos médicaments non utilisés dans nos points de collecte spéciaux dans les pharmacies ou les hôpitaux.</p> 
+                <h3>🌱 Contribuez à la Protection de l'Environnement</h3>
+                <p>En évitant de jeter les médicaments dans la poubelle, vous participez à la préservation de l'environnement.</p>  
+                <h3>🎁 Gagnez des Points</h3>
+                <p>Chaque fois que vous retournez des médicaments, gagnez des points. Ces points peuvent être convertis en avantages exclusifs.</p>          
+            </div>
+            <img src="image-removebg-preview (3).png" style="scale:0.7">
+        </div>
+
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2023 Votre Service de Rendez-vous Médicaux. Tous droits réservés.</p>
+    </footer>
+
+    <script >// Script pour ajouter une alerte lorsque le bouton d'enregistrement est cliqué
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            alert('Fonctionnalité d\'enregistrement en cours de développement.');
+        });
+        // Script pour l'effet de parallaxe
+        window.addEventListener('scroll', function() {
+            const parallaxSection = document.querySelector('.parallax-section');
+            let scrollPosition = window.scrollY;
+            parallaxSection.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+        });
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat avec l'IA</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            padding: 10px;
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+
+        .user-message, .assistant-message {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #2ecc71;
+            color: #fff;
+            text-align: right;
+        }
+
+        .assistant-message {
+            background-color: #e74c3c;
+            color: #fff;
+            text-align: left;
+        }
+
+        .chat-input {
+            width: calc(100% - 20px);
+            margin: 0 10px;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ccc;
+            outline: none;
+        }
+
+        .send-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-top: 1px solid #ccc;
+            cursor: pointer;
+        }
+.audio-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px; /* Ajout d'une marge pour l'espace */
+    transition: background-color 0.3s ease; /* Animation de transition pour le changement de couleur */
+}
+
+.audio-button:hover {
+    background-color: #2980b9; /* Changement de couleur au survol */
+}
+.audio-button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 10px; /* Ajout d'une marge pour l'espace */
+        transition: background-color 0.3s ease; /* Animation de transition pour le changement de couleur */
+    }
+
+    .audio-button:hover {
+        background-color: #2980b9; /* Changement de couleur au survol */
+    }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Chat avec l'IA</div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <input type="text" class="chat-input" id="userInput" placeholder="Écrivez un message...">
+        <button class="send-button" onclick="sendMessage()">Envoyer</button>
+        <button class="audio-button" onclick="startAudio()">Parler</button>
+        <audio id="audioPlayer" controls style="display: none;"></audio>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+
+        function sendMessage() {
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== '') {
+                appendMessage('user', userMessage);
+                getAssistantResponse(userMessage);
+                userInput.value = '';
+            }
+        }
+
+        function startAudio() {
+            recognition.start();
+        }
+
+        recognition.onresult = function(event) {
+            const userAudioText = event.results[0][0].transcript;
+            userInput.value = userAudioText;
+            sendMessage(); // Envoyer le message après la conversion audio vers le texte
+        };
+
+        function getAssistantResponse(userMessage) {
+            // Remplacez cette fonction factice par l'appel à votre API réelle.
+            const assistantResponse = "Je suis une réponse factice de l'IA.";
+            appendMessage('assistant', assistantResponse);
+            convertTextToSpeech(assistantResponse);
+        }
+
+        function appendMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add(`${sender}-message`);
+            messageDiv.innerText = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function convertTextToSpeech(text) {
+            const synthesis = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            synthesis.speak(utterance);
+
+            audioPlayer.src = `data:audio/wav;base64,${btoa(text)}`;
+            audioPlayer.style.display = 'block';
+            audioPlayer.play();
+        }
+    </script>
+</body>
+</html>

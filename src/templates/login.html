@@ -1,0 +1,97 @@
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    form:hover {
+        transform: scale(1.02);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 2px solid #3498db;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+        border-color: #2980b9;
+    }
+
+    button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 14px 24px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+    }
+    label {
+      text-align: start;
+    }
+    .connexion{
+        display:block;
+    }
+    h1{
+        font-family:Satisfy;
+        text-align:center;
+    }
+</style>
+<div class="connexion text-start">
+    <form method="post" class="text-start" action="/login" enctype="multipart/form-data" >
+        <h1>Page de connexion</h1>
+        <div class="text-start row mb-5">
+          <div class="col-12 mb-5">
+            <label> Email </label>
+            {{ form.email(class="form-control form-control-lg", placeholder="Email", type="email" ) }}
+          </div>
+          <div class="col-12">
+            <label for="" > Password </label>
+            {{ form.password(class="form-control form-control-lg", placeholder="Password", type="password"  ) }}
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="text-center">
+            <button type="submit" class="btn bg-gradient-secondary  me-2"> Connexion </button>
+            <p class="mb-0 text-center">
+              <a href="{{ url_for('auth.register')}}"> Don't have an account? </a>
+            </p>
+          </div>
+        </div>
+      </form>
+</div>

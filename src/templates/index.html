@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&display=swap">
+    <link rel="stylesheet" href="static/principal.css">
+    <title>Images à gauche, Texte à droite</title>
+    <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="img-container">
+        <div class="box">
+            <img src="static/doctor.jpg" alt="">
+        </div>
+        <div class="box">
+            <img src="static/patients.jpg" alt="">
+        </div>
+        <div class="box">
+            <img src="static/RDV.jpg" alt="">
+        </div>
+        <div class="box">
+            <img src="Bin-e-2.jpg" alt="">
+        </div>
+    </div>
+    
+    <div class="text-container">
+        <h1>Bienvenue à votre hopitâl en ligne </h1>
+        <br>
+        <p class="animated-text">Choisir ton propre rendez-vous en ligne</p>
+        <p class="animated-text">recycler tes médicaments et gagner de l'argent </p>
+        <p class="animated-text">Parler avec ton propre médecin</p>
+    </div>
+</div>
+<div class="client-button">
+    <a href="{{ url_for('auth.login_post')}}">
+        <button>Espace Client</button>
+    </a>
+    <a href="{{ url_for('auth.register')}}">
+        <button>Create Account </button>
+    </a>
+    
+    <!-- <button id="compterPointsBtn" onclick="compterPoints()">Vos points merci 0</button> -->
+   
+</div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const textElements = document.querySelectorAll('.animated-text');
+            let currentIndex = 0;
+
+            function showNextText() {
+                textElements[currentIndex].classList.remove('show');
+                currentIndex = (currentIndex + 1) % textElements.length;
+                textElements[currentIndex].classList.add('show');
+            }
+
+            textElements[currentIndex].classList.add('show');
+            setInterval(showNextText, 2000);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const textElements = document.querySelectorAll('.animated-text');
+            let currentIndex = 0;
+
+            function showNextText() {
+                textElements[currentIndex].classList.remove('show');
+                currentIndex = (currentIndex + 1) % textElements.length;
+                textElements[currentIndex].classList.add('show');
+            }
+
+            textElements[currentIndex].classList.add('show');
+            setInterval(showNextText, 2000);
+        });
+
+       
+    </script>
+
+</body>
+</html>

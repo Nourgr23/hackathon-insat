@@ -1,0 +1,129 @@
+h1{
+    font-size: 60px;
+     
+    color:rgb(21, 152, 152) ;
+  font-family:Satisfy ;
+  text-align: center;
+  margin:50px;
+  margin-bottom: 80px;
+}
+body{
+    background-color: #ecf0f1;
+}
+#Urg{
+    font-size: 60px;
+    color:white ;
+    font-family:Satisfy ;
+    text-align: center;
+    margin-bottom: 80px;
+    background-color: #256996;
+    width: 100%;
+    margin-left:0px;
+    padding-top: 80px;
+    margin-top: 0px;
+    padding-bottom: 50px;
+}
+.tout{
+    display: block;
+}
+.symp{
+    display: block;
+    margin:auto;
+    justify-content: center;
+    width: 70%;
+}
+.symps{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom:60px ;
+    margin-top:90px;
+}
+
+.buttonsymp{
+    background-color: #256996;
+    text-decoration: none;
+    justify-content: center;
+    padding:40px;
+    color: white;
+    font-family: cursive;
+    border-radius: 30px;
+    margin-right:40px;
+    margin-left:40px;
+    width:20%;
+    font-size: 19px;
+    transition: transform 0.3s ease;
+
+}
+.buttonsymp:hover{
+    transform: scale(1.05);
+    background-color: #3498db;
+}
+#Soumettre{
+    justify-content: center;
+    background-color: #3498db;
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    padding:40px;
+    color: white;
+    font-family: cursive;
+    margin:auto;
+    border-radius: 50px;
+    width:20%;
+
+}
+.meds{
+    margin-top:10%;
+    display: flex;
+    justify-content: space-between;
+    width:80%.
+}
+.map{
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+    margin-right: 50px;
+}
+.meds h1{
+    font-size: 40px;
+    width: 70%;
+}
+.meds p{
+    width:70%;
+    justify-content: center;
+    margin: 80px;
+    font-size: 20px;
+    font-weight:bold;
+
+}
+.meds h3{
+    font-size: 30px;
+    font-weight: bolder;
+    justify-content: center;
+    margin-left:120px;
+    color:#113f5d;
+    font-family: Satisfy;
+}
+#mercis{
+    background-color: rgb(21, 152, 152) ;
+    padding:30px;
+    border-radius: 20px;
+    margin-top: 50px;
+    justify-content: center ;
+    margin-left: 90px;
+    font-family: cursive;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 60px;
+}
+#mercis:hover{
+    background-color: #318eccd4;
+    color:black;
+}
+.butmerci{
+    display: block;
+}
+.merci{
+    display: block;
+}

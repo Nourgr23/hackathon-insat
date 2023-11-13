@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Réinitialiser les marges et les rembourrages */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        button {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Utiliser une police Google */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Masquer le conteneur du calendrier par défaut */
+        .hidden {
+            display: none;
+        }
+
+        /* Styling du bouton */
+        #showCalendarBtn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Styling du conteneur principal */
+        #mainContainer {
+            text-align: center;
+        }
+
+        /* Styling du conteneur du calendrier */
+        #calendarContainer {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            position: absolute;
+            background-color: #fff;
+            z-index: 1000;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Personnaliser le style du calendrier */
+        .flatpickr-calendar {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Ajouter des styles pour les titres et les en-têtes */
+        h1,
+        h2,
+        h3 {
+            color: #3498db;
+            font-size: 60px;
+            font-family: Satisfy;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+    <title>Calendrier de Rendez-vous</title>
+</head>
+
+<body>
+
+    <div id="mainContainer">
+        <h1>Planifiez votre Rendez-vous</h1>
+        <p>Cliquez sur le bouton ci-dessous pour sélectionner une date pour votre rendez-vous en ligne.</p>
+        <button id="showCalendarBtn">Afficher le calendrier</button>
+        <div class="d-flex justify-content-center" style="margin-left:165px">
+            <div id="calendarContainer" class="hidden">
+
+                <!-- Le calendrier généré par JavaScript sera placé ici -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var showCalendarBtn = document.getElementById('showCalendarBtn');
+            var calendarContainer = document.getElementById('calendarContainer');
+            var calendarInstance;
+
+            showCalendarBtn.addEventListener('click', function () {
+                // Afficher le calendrier en changeant la classe CSS
+                calendarContainer.classList.toggle('hidden');
+
+                if (!calendarInstance) {
+                    // Si le calendrier n'existe pas encore, créer un nouveau calendrier
+                    calendarInstance = flatpickr(calendarContainer, {
+                        dateFormat: 'd-m-Y',
+                        inline: true,
+                        onChange: function (selectedDates, dateStr, instance) {
+                            // Gérer la date sélectionnée
+                            handleSelectedDate(dateStr);
+                        }
+                    });
+                }
+            });
+
+            function handleSelectedDate(dateStr) {
+                // Envoyer la date sélectionnée au backend
+                // Vous pouvez utiliser ici une requête AJAX pour envoyer la date au serveur
+                // par exemple, en utilisant fetch() ou XMLHttpRequest
+                console.log('Date sélectionnée :', dateStr);
+
+                // Changez la couleur de fond de la date sélectionnée
+                var selectedDateElement = document.querySelector('.flatpickr-day.selected');
+                if (selectedDateElement) {
+                    selectedDateElement.style.backgroundColor = '#FFA07A'; // Vous pouvez changer la couleur ici
+                }
+            }
+        }); 
+    </script>
+</body>
+
+</html>
